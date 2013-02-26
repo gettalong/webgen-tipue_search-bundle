@@ -1,0 +1,73 @@
+author: &author Thomas Leitner <t_leitner@gmx.at>
+summary: webgen extension bundle for Tipue Search javascript site search engine
+description: |
+  Tipue Search is a site search engine which uses jQuery. It can use a
+  pre-built search index to provide a fast search experience for a
+  static website.
+version: 1.0.0
+license: MIT
+homepage: http://github.com/gettalong/webgen-tipue_search-bundle
+
+extensions:
+  path_handler.tipue_search:
+    author: *author
+    summary: |
+      Creates a search index data file for the Tipue Search site search
+      engine
+
+  tag.tipue_search:
+    author: *author
+    summary: |
+      Creates a site search field and result area for displaying search
+      results
+
+options:
+  tag.tipue_search.path:
+    summary: |
+      The source path that should be used for creating the Tipue Search
+      data file. The destination path is derived from this path the
+      usual way. Don't use a path that does already exist!
+    syntax: |
+      `PATH` where `PATH` is a relative or absolute source path
+    example:
+      tag: |
+        {tipue_search: {path: data.js, options: {mode: static}, entries: {alcn: /**/*.html}}}
+
+  tag.tipue_search.options:
+    summary: |
+      Options passed to the Tipue Search engine (and partially to
+      path_handler.tipue_search). The keys 'mode' and 'liveDescription'
+      are mapped to the meta information keys 'mode' and 'content_css'
+      for path_handler.tipue_search.
+    syntax: |
+      `{KEY: VALUE, ...}` where `KEY` and `VALUE` are key-value pairs of
+      Tipue Search options
+    example:
+      config: |
+        tag.tipue_search.options: {}
+      tag: |
+        {tipue_search: {path: data.js, options: {mode: static}, entries: {alcn: /**/*.html}}}
+
+  tag.tipue_search.entries:
+    summary: |
+      Node finder option set defining the search index. The nodes of the
+      result set may only contain valid HTML content.
+    syntax: |
+      `OPTIONS` where `OPTIONS` is a hash with node finder options
+    example:
+      tag: |
+        {tipue_search: {path: data.js, options: {mode: static}, entries: {alcn: /**/*.html}}}
+
+  tag.tipue_search.template:
+    summary: |
+      The template node used for rendering the tag. It has to contain the block
+      'tag.tipue_search' because this block is used for rendering.
+    syntax: |
+      `PATH` where `PATH` is the (a)(l)cn of the template node
+    example:
+      config: |
+        tag.tipue_search.template: /other.template
+      tag: |
+        {tipue_search: {path: data.js, options: {mode: static},
+                        entries: {alcn: /**/*.html}, template: /my.template}}
+

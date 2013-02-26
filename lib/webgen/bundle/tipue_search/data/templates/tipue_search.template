@@ -1,0 +1,23 @@
+--- name:tag.tipue_search pipeline:erb
+<%
+options = context[:config]['tag.tipue_search.options'].dup
+options['contentLocation'] = context[:data_node].url if options['mode'] == 'json'
+%>
+<input type="text" id="tipue_search_input" /><input type="button" id="tipue_search_button" />
+<div id="tipue_search_content"></div>
+<script>
+$(document).ready(function() {
+     $('#tipue_search_input').tipuesearch(<%= JSON.dump(options) %>);
+});
+</script>
+--- name:tipue_search pipeline:ruby
+if context.node['mode'] == 'live'
+  context.content = "var tipuesearch_pages = #{JSON.dump(context.node.entries.map {|e| e.url})}"
+else
+  data = []
+  context.node.entries.each do |node|
+    data << {'loc' => node.url, 'title' => node['title'], 'tags' => '', 'text' => context.node.text_for(node)}
+  end
+
+  context.content = "var tipuesearch = {\"pages\": #{JSON.dump(data)}};"
+end

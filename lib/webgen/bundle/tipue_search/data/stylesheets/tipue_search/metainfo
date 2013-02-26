@@ -1,0 +1,4 @@
+--- paths
+tipuesearch.css:
+  handler: copy
+  pipeline: erb
