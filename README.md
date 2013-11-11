@@ -13,7 +13,7 @@ three modes of operation:
   (fast, no web server needed).
 
 [Tipue Search]: http://www.tipue.com/search/
-[webgen]: http://webgen.rubyforge.org
+[webgen]: http://webgen.gettalong.org
 
 
 # Usage
