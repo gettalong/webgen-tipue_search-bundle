@@ -4,7 +4,7 @@ options = context[:config]['tag.tipue_search.options'].dup
 options['contentLocation'] = context[:data_node].url if options['mode'] == 'json'
 %>
 <input type="text" placeholder="search" id="tipue_search_input" />
-<input type="button" id="tipue_search_button" />
+<input type="button" id="tipue_search_button" value=" " />
 <div id="tipue_search_content"></div>
 <script>
 $(document).ready(function() {
