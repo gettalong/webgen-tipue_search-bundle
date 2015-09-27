@@ -54,10 +54,10 @@ Tipue Search can easily be integrated into a webgen website by using the
 included `tipue_search` tag:
 
     {tipue_search: {path: data.js, options: {mode: static},
-                    nodes: {alcn: /**/*.html}}}
+                    entries: {alcn: /**/*.html}}}
 
 The option `options` can be used to set any [Tipue Search
-option][tipuset] and the option `nodes` specifies the nodes that should
+option][tipueset] and the option `nodes` specifies the nodes that should
 appear in the search index (more information on this below).
 
 If this tag occurs on a page, the needed nodes are automatically linked
